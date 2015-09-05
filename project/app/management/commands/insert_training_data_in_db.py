@@ -14,15 +14,15 @@ class Command(BaseCommand):
             csvreader = csv.reader(csvfile)
             print "starting"
             next(csvreader) # to skip the headings
-            counter = 0
-            for row in csvreader:
+            c = 0
+            for counter, row in enumerate(csvreader):
                 id_ = int(row[0])
                 target = int(row[-1])
-                dataset = BaseModel.objects.create(attr_ID=id_, target=target)
+                dataset = BaseModel.objects.create(attr_ID=id_, attr_TARGET=target)
                 for x in range(1, 1934 + 1):
-                    setattr(dataset, make_equal_length(x), row[x])
+                    setattr(dataset, 'ATTR_VAR_' + make_equal_length(x), row[x])
                 dataset.save()
-                counter += 1
 
                 if counter % 10000 == 0: print counter
-            print "Inserted", counter, "rows"
+                c = counter
+            print "Inserted", c, "rows"
