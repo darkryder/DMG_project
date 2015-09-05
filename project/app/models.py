@@ -7,5 +7,5 @@ class BaseModel(models.Model):
 	attr_ID = models.IntegerField()
 	target = models.IntegerField()
 
-	# for x in range(1, 1934 + 1):
-	# 	locals().update({'VAR_' + make_equal_length(x): models.TextField(null=True)})
+	for x in range(1, 1934 + 1):
+		locals().update({'VAR_' + make_equal_length(x): models.TextField(null=True)})
