@@ -3,7 +3,7 @@ from django.db import models
 def make_equal_length(a):
 	return '0'*(4-len(str(a))) + str(a)
 
-class BaseModel(models.Model):
+class TrainingDataset(models.Model):
 	attr_ID = models.IntegerField()
 	attr_TARGET = models.IntegerField()
 

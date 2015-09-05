@@ -1,7 +1,7 @@
 import csv
 
 from django.core.management.base import BaseCommand
-from app.models import BaseModel, make_equal_length
+from app.models import TrainingDataset, make_equal_length
 
 class Command(BaseCommand):
     help = 'Read csv file of training data and put it in the database'
@@ -18,7 +18,7 @@ class Command(BaseCommand):
             for counter, row in enumerate(csvreader):
                 id_ = int(row[0])
                 target = int(row[-1])
-                dataset = BaseModel.objects.create(attr_ID=id_, attr_TARGET=target)
+                dataset = TrainingDataset.objects.create(attr_ID=id_, attr_TARGET=target)
                 for x in range(1, 1934 + 1):
                     setattr(dataset, 'ATTR_VAR_' + make_equal_length(x), row[x])
                 dataset.save()
