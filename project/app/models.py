@@ -8,4 +8,4 @@ class TrainingDataset(models.Model):
 	attr_TARGET = models.IntegerField()
 
 	for x in range(1, 1934 + 1):
-		locals().update({'ATTR_VAR_' + make_equal_length(x): models.TextField(null=True)})
+		locals().update({'attr_VAR_' + make_equal_length(x): models.TextField(null=True)})

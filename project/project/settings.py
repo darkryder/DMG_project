@@ -76,17 +76,21 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 DATABASES = {
-    #'default': {
-    #    'ENGINE': 'django.db.backends.sqlite3',
-    #    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    #},
-     'default': {
+    'default1': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    },
+     'default2': {
          'ENGINE': 'django.db.backends.mysql',
          'NAME': 'DMG_TEST',
          'USER': os.environ['DB_USER'],
          'PASSWORD': os.environ['DB_PASSWORD'],
          'HOST': 'localhost',   # Or an IP Address that your DB is hosted on WILL CHANGE
          'PORT': '3306',
+     },
+     'default' : {
+        'ENGINE' : 'django_mongodb_engine',
+        'NAME' : 'my_database'
      }
 }
 
