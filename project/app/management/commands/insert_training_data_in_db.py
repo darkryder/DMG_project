@@ -19,6 +19,7 @@ class Command(BaseCommand):
             for counter, row in enumerate(csvreader):
                 #import pdb; pdb.set_trace()
                 id_ = int(row[0])
+                #if id_ <= 218303: continue
                 target = int(row[-1])
                 dataset = TrainingDataset.objects.create(attr_ID=id_, attr_TARGET=target)
                 for x in range(1, 1934 + 1):
