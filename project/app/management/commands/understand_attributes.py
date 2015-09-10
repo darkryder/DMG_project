@@ -27,7 +27,7 @@ def print_info():
 
 print "Collecting data, please wait..."
 for i, obj in enumerate(TrainingDataset.objects.all()):
-	if i > 300: break
+	if i > 500: break
 	sample_datapoints.append(obj)
 
 att = lower
