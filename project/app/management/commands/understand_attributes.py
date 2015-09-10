@@ -38,7 +38,8 @@ while (att <=higher):
 
 	print "[%d]" % att
 	check = [getattr(x, 'attr_VAR_' + make_equal_length(att)) for x in sample_datapoints]
-	print " | ".join(check)
+	if check is not None: print " | ".join([x if x is not None else "None" for x in check])
+	else: print "None found, skipping"
 	print_info()
 
 	# ask for decision
