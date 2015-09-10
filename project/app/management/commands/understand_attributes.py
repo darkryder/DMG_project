@@ -32,7 +32,9 @@ for i, obj in enumerate(TrainingDataset.objects.all()):
 
 att = lower
 while (att <=higher):
-	if att in ABSENT_ATTRIBUTES: continue
+	if att in ABSENT_ATTRIBUTES: 
+		att+=1
+		continue
 
 	print "[%d]" % att
 	check = [getattr(x, 'attr_VAR_' + make_equal_length(att)) for x in sample_datapoints]
