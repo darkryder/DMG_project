@@ -13,7 +13,6 @@ ABSENT_ATTRIBUTES = (218, 240)
 range_ = raw_input("Enter attribute range, for example 1-126, inclusive of attributes.")
 lower, higher = map(int, range_.split('-'))
 results =[]
-decisions = dict(OPTIONS)
 
 sample_datapoints = []
 
@@ -25,17 +24,17 @@ for i, obj in enumerate(TrainingDataset.objects.all()):
 att = lower
 while (att <=higher):
     count=0
-	if att in ABSENT_ATTRIBUTES: 
+    if att in ABSENT_ATTRIBUTES: 
         att+=1
         continue
-	check = [getattr(x, 'attr_VAR_' + make_equal_length(att)) for x in sample_datapoints]
+    check = [getattr(x, 'attr_VAR_' + make_equal_length(att)) for x in sample_datapoints]
     for x in check:
-        if x=='NA': count++
+        if x=='NA': count+=1
 		
     results.append(count)
-	att+=1
+    att+=1
 
-f = open('attr_' + str(lower) + "_" + str(higher), 'a+')
+f = open('q5.txt', 'a+')
 f.write(str(results))
 f.write('\n')
 f.write(max(results))

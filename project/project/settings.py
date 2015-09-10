@@ -83,8 +83,8 @@ DATABASES = {
      'default2': {
          'ENGINE': 'django.db.backends.mysql',
          'NAME': 'DMG_TEST',
-         'USER': os.environ['DB_USER'],
-         'PASSWORD': os.environ['DB_PASSWORD'],
+#         'USER': os.environ['DB_USER'],
+#         'PASSWORD': os.environ['DB_PASSWORD'],
          'HOST': 'localhost',   # Or an IP Address that your DB is hosted on WILL CHANGE
          'PORT': '3306',
      },
