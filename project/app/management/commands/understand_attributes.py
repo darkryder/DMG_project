@@ -25,16 +25,17 @@ def print_info():
 	print
 	print "Select above options. [0 to go to previous dataset if you made a mistake][-1 if you want someone else to check]"
 
+print "Collecting data, please wait..."
 for i, obj in enumerate(TrainingDataset.objects.all()):
 	if i > 100: break
-	sample_datapoints.append(x)
+	sample_datapoints.append(obj)
 
 att = lower
 while (att <=higher):
 	if att in ABSENT_ATTRIBUTES: continue
 
 	print "[%d]" % att
-	check = [getattr(x, 'attr_VAR_', make_equal_length(att)) for x in sample_datapoints]
+	check = [getattr(x, 'attr_VAR_' + make_equal_length(att)) for x in sample_datapoints]
 	print " | ".join(check)
 	print_info()
 
