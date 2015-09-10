@@ -27,7 +27,7 @@ def print_info():
 
 print "Collecting data, please wait..."
 for i, obj in enumerate(TrainingDataset.objects.all()):
-	if i > 100: break
+	if i > 200: break
 	sample_datapoints.append(obj)
 
 att = lower
@@ -49,7 +49,10 @@ while (att <=higher):
 			print "Int please"
 			continue
 		if choice in [x[0] for x in OPTIONS]:
-			results['attr_VAR_' + make_equal_length(att)] = choice
+			if(choice == "-1"):
+				results['attr_VAR_' + make_equal_length(att)] = OPTIONS[5][1]
+			else:
+				results['attr_VAR_' + make_equal_length(att)] = OPTIONS[choice-1][1]
 			done = True
 		elif choice == 0:
 			done=True
