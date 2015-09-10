@@ -20,7 +20,7 @@ sample_datapoints = []
 print "Collecting data, please wait..."
 for i, obj in enumerate(TrainingDataset.objects.all()):
     if i > 500: break
-	sample_datapoints.append(obj)
+	    sample_datapoints.append(obj)
 
 att = lower
 while (att <=higher):
