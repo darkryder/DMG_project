@@ -52,7 +52,7 @@ while (att <=higher):
 			print "Int please"
 			continue
 		if choice in [x[0] for x in OPTIONS]:
-			if(choice == "-1"):
+			if(choice == -1):
 				results['attr_VAR_' + make_equal_length(att)] = OPTIONS[5][1]
 			else:
 				results['attr_VAR_' + make_equal_length(att)] = OPTIONS[choice-1][1]

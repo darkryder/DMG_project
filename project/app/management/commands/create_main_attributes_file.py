@@ -6,10 +6,10 @@ from django.core.management.base import BaseCommand
 
 TEMPLATE = """
 
-NOMINAL = %{nominal}s
-ORDINAL = %{ordinal}s
-BINARY  = %{binary}s
-NUMERIC = %{numeric}s
+NOMINAL = %(nominal)s
+ORDINAL = %(ordinal)s
+BINARY  = %(binary)s
+NUMERIC = %(numeric)s
 
 """
 
