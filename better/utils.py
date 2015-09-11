@@ -32,10 +32,10 @@ def get_data(limit=None):
 
             for x in range(1, 1934 + 1):
                 if x in ABSENT_ATTRIBUTES: continue
-                x_temp = x
-                if 218 < x < 240: x_temp -= 1
-                if x > 240: x_temp -= 2
-                setattr(datapoint, 'VAR_' + _make_equal_length(x_temp), row[x_temp])
+                # x_temp = x
+                # if 218 < x < 240: x_temp -= 1
+                # if x > 240: x_temp -= 2
+                setattr(datapoint, 'VAR_' + _make_equal_length(x), row[x])
             yield datapoint
             # pbar.update(counter)
         

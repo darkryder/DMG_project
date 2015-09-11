@@ -31,7 +31,7 @@ pbar = ProgressBar(maxval=ROW_COUNT - 1).start()
 
 for i, row in enumerate(rows):
 	for attr_name in NUMERIC_ATTRIBUTES:
-		# if i in ABSENT_ATTRIBUTES: continue
+		if i in ABSENT_ATTRIBUTES: continue
 		attribute_info = all_info[int(attr_name[-4:])]
 		try:
 			value = float(getattr(row, attr_name))
