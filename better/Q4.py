@@ -50,3 +50,12 @@ for i, row in enumerate(rows):
 	# print ', '.join([str(x[3]) for x in all_info[:30]])
 	pbar.update(i)
 pbar.finish()
+
+EMPTY_RESPONSE = [0, 0, 0, 0]
+THRESHOLD_MINIMUM_NUMBER_OF_VALUES = 140000
+filtered = [x for x in all_info if (x != EMPTY_RESPONSE and
+			x[0] > THRESHOLD_MINIMUM_NUMBER_OF_VALUES)]
+
+filtered = sorted(filtered, key=lambda x: x[3], reverse=True)
+
+print filtered[0], all_info.index(filtered[0])
