@@ -4,3 +4,4 @@ train.csv.zip
 train.csv
 *.pyc
 *.*~
+attr*
