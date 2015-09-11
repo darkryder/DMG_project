@@ -19,7 +19,7 @@ sample_datapoints = []
 print "Collecting data, please wait..."
 for i, obj in enumerate(TrainingDataset.objects.all()):
     if i > 500: break
-	sample_datapoints.append(obj)
+        sample_datapoints.append(obj)
 
 att = lower
 while (att <=higher):
@@ -37,5 +37,5 @@ while (att <=higher):
 f = open('q5.txt', 'a+')
 f.write(str(results))
 f.write('\n')
-f.write(max(results))
+f.write(str(max(results)))
 f.close()
