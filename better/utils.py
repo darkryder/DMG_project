@@ -17,7 +17,7 @@ def get_data(limit=None):
     else:
         limit = ROW_COUNT
 
-    pbar = ProgressBar(maxval=limit).start()
+    # pbar = ProgressBar(maxval=limit).start()
     with open(PATH, 'rb') as csvfile:
         csvreader = csv.reader(csvfile)
         next(csvreader) # to skip the headings
@@ -36,12 +36,10 @@ def get_data(limit=None):
                 if 218 < x < 240: x_temp -= 1
                 if x > 240: x_temp -= 2
                 setattr(datapoint, 'VAR_' + _make_equal_length(x_temp), row[x_temp])
-            final_data.append(datapoint)
-            pbar.update(counter)
+            yield datapoint
+            # pbar.update(counter)
         
-        pbar.finish()
-
-    return final_data 
+        # pbar.finish()
 
 def _make_equal_length(a):
     return '0'*(4-len(str(a))) + str(a)
