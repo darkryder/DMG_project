@@ -45,10 +45,16 @@ for i, row in enumerate(rows):
 		attribute_info[2] += value**2
 		s0, s1, s2 = attribute_info[:3]
 
-		if s0 not in (0, 1) and (s0 * s2) >= (s1 * s1):
-			attribute_info[3] = math.sqrt((s0 * s2 - s1 * s1)/(s0 * (s0 - 1)))
-	# print ', '.join([str(x[3]) for x in all_info[:30]])
+		# if s0 not in (0, 1) and (s0 * s2) >= (s1 * s1):
+		# 	attribute_info[3] = math.sqrt((s0 * s2 - s1 * s1)/(s0 * (s0 - 1)))
 	pbar.update(i)
+
+# Let's see if this dramatically improves the speed.
+for info in all_info:
+	s0, s1, s2 = info[:3]
+	if s0 not in (0, 1) and (s0 * s2) >= (s1 * s1):
+			info[3] = math.sqrt((s0 * s2 - s1 * s1)/(s0 * (s0 - 1)))
+
 pbar.finish()
 
 EMPTY_RESPONSE = [0, 0, 0, 0]
