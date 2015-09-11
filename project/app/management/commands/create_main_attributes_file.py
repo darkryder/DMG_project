@@ -1,7 +1,18 @@
 from glob import glob
 from progressbar import ProgressBar
+import os
 
 from django.core.management.base import BaseCommand
+
+TEMPLATE = """
+
+NOMINAL = %{nominal}s
+ORDINAL = %{ordinal}s
+BINARY  = %{binary}s
+NUMERIC = %{numeric}s
+
+"""
+
 
 class Command(BaseCommand):
     help = 'Create a main attribute file after merging all small attribute files'
@@ -20,4 +31,18 @@ class Command(BaseCommand):
                 final_dict.update(subset)
                 pbar.update(i)
         pbar.finish()
-        print final_dict, len(final_dict)
+
+        categories = {x: [] for x in ('nominal', 'ordinal', 'binary', 'numeric')}
+        for attr_name, attr_type in final_dict.items():
+            if attr_type in ('nominal', 'ordinal', 'binary'):
+                categories[attr_type].append(attr_name)
+            elif attr_type in ('interval', 'ratio'):
+                categories['numeric'].append(attr_name)
+            else:
+                print "found weird", attr_type, "for", attr_name
+
+        filename = "attribute_classifications.py"
+        if os.path.exists(filename):
+            os.remove(filename)
+        output = open(filename, 'a+')
+        f.write(TEMPLATE % categories)
