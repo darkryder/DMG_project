@@ -9,6 +9,9 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         final_dict = {}
         files = glob("attr_*")
+        if len(files) == 0:
+            print "No files found to merge"
+            return
         pbar = ProgressBar(maxval=len(files) - 1).start()
         for i, filename in enumerate(files):
             with open(filename, 'r') as f:
