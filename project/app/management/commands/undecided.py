@@ -56,9 +56,9 @@ while (att <=len(attr1)):
 			continue
 		if choice in [x[0] for x in OPTIONS]:
 			if(choice == -1):
-				results['attr_' + attr1[att]] = OPTIONS[5][1]
+				results['attr_' + str(attr1[att])] = OPTIONS[5][1]
 			else:
-				results['attr_' + attr1[att] = OPTIONS[choice-1][1]
+				results['attr_' + str(attr1[att])] = OPTIONS[choice-1][1]
 			done = True
 		elif choice == 0:
 			done=True
