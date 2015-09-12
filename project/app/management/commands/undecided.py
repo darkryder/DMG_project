@@ -29,18 +29,18 @@ print "Collecting data, please wait..."
 for i, obj in enumerate(TrainingDataset.objects.all()):
 	if i > 2000: break
 	sample_datapoints.append(obj)
-f1=open('undecidedattributes.txt','r')
+f1=open('undecidedAttributes.txt','r')
 content = f1.readlines()
 for x in content:
-    attr1.append(x)
+    attr1.append(x.strip())
 att = 0
-while (att <=len(attr1)):
+while (att < len(attr1)):
 	if attr1[att] in ABSENT_ATTRIBUTES: 
 		att+=1
 		continue
 
-	print "[%d]" % att
-	check = [getattr(x, 'attr_' + str(attr1[att])) for x in sample_datapoints]
+	print "[%s]" % attr1[att]
+	check = [getattr(x, "attr_" + str(attr1[att])) for x in sample_datapoints]
 	if check is not None: print " | ".join([x if x is not None else "None" for x in check])
 	else: print "None found, skipping"
 	print_info()
@@ -66,6 +66,6 @@ while (att <=len(attr1)):
 	if choice == 0: att -= 2 # because the lower line will increment it to finally get to -=1
 	att+=1
 
-f = open('attr_' + str(lower) + "_" + str(higher), 'a+')
+f = open('undecidedDataSet.txt', 'a+')
 f.write(str(results))
 f.close()
