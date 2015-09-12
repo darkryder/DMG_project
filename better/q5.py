@@ -1,5 +1,5 @@
 import csv
-#from progressbar import ProgressBar
+from progressbar import ProgressBar
 
 PATH = "train.csv"
 ROW_COUNT = 145231
@@ -17,8 +17,7 @@ def get_data(limit=None):
     else:
         limit = ROW_COUNT
 
-    # pbar = ProgressBar(maxval=limit).start()
-
+    pbar = ProgressBar(maxval=limit).start()
     with open(PATH, 'rb') as csvfile:
         csvreader = csv.reader(csvfile)
         next(csvreader) # to skip the headings
@@ -36,22 +35,13 @@ def get_data(limit=None):
                 x_temp = x
                 if 218 < x < 240: x_temp -= 1
                 if x > 240: x_temp -= 2
-
                 setattr(datapoint, 'VAR_' + _make_equal_length(x_temp), row[x_temp])
-            #final_data.append(datapoint)
-            yield datapoint
-            #pbar.update(counter)
+            final_data.append(datapoint)
+            pbar.update(counter)
         
-        #pbar.finish()
+        pbar.finish()
 
-    #return final_data 
-
-                setattr(datapoint, 'VAR_' + _make_equal_length(x), row[x_temp])
-            yield datapoint
-            # pbar.update(counter)
-        
-        # pbar.finish()
-
+    return final_data 
 
 def _make_equal_length(a):
     return '0'*(4-len(str(a))) + str(a)
