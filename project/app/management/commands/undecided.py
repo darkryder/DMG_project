@@ -33,14 +33,14 @@ f1=open('undecidedattributes.txt','r')
 content = f1.readlines()
 for x in content:
     attr1.append(x)
-att = attr1[0]
+att = 0
 while (att <=len(attr1)):
 	if attr1[att] in ABSENT_ATTRIBUTES: 
 		att+=1
 		continue
 
 	print "[%d]" % att
-	check = [getattr(x, 'attr_' + str(attr1(att))) for x in sample_datapoints]
+	check = [getattr(x, 'attr_' + str(attr1[att])) for x in sample_datapoints]
 	if check is not None: print " | ".join([x if x is not None else "None" for x in check])
 	else: print "None found, skipping"
 	print_info()
@@ -56,9 +56,9 @@ while (att <=len(attr1)):
 			continue
 		if choice in [x[0] for x in OPTIONS]:
 			if(choice == -1):
-				results['attr_VAR_' + make_equal_length(att)] = OPTIONS[5][1]
+				results['attr_' + attr1[att]] = OPTIONS[5][1]
 			else:
-				results['attr_VAR_' + make_equal_length(att)] = OPTIONS[choice-1][1]
+				results['attr_' + attr1[att] = OPTIONS[choice-1][1]
 			done = True
 		elif choice == 0:
 			done=True
