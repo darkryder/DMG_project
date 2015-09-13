@@ -1,6 +1,6 @@
 import re
 from collections import defaultdict
-
+f1=open('ansq7.csv','a+')
 def _make_equal_length(a):
     return '0'*(4-len(str(a))) + str(a)
 chi={}
@@ -16,9 +16,11 @@ val1=sorted(chi, key=lambda key: chi[key])
 print 'sorted order is:'
 for content in val1:
     
-    print 'VAR_'+_make_equal_length(int(chi[content]))
+    data='VAR_'+_make_equal_length(int(chi[content]))
+    print data
+    f1.write(data+str('\n'))
     
-
+f1.close()
 ''' NOte:
 index 1934 --> target in train.csv
 1 ->ID

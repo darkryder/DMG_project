@@ -1,5 +1,7 @@
 import re
 from collections import defaultdict
+
+f1=open('ansq6.csv','a+')
 def _make_equal_length(a):
     return '0'*(4-len(str(a))) + str(a)
 gain={}
@@ -16,4 +18,8 @@ print val1
 print 'sorted order is:'
 for content in range(0,len(val1)): #displays rank (value based-->var name)
     
-    print 'VAR_'+_make_equal_length(int(val1[content][1]))#print attr [0] from csv
+    data='VAR_'+_make_equal_length(int(val1[content][1]))#print attr [0] from csv
+    print data
+    f1.write(data+str('\n'))#ans write to file
+    
+f1.close()
