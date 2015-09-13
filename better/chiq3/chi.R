@@ -1,7 +1,7 @@
 # we can make a new csv file for categorical attribute to
 ########make a list gg=[] having var names(eg 1,5,6,) which are CATEGORICAl then run a loop for i in gg:do// else continue, same for j
-v<-read.csv('train_changepart.csv',header=T)
-i<-215#taking into account ID but should be 2
+v<-read.csv('cleaned_train.csv',header=T)
+i<-100#taking into account ID but should be 2
 data<-paste(c('chisquare','i','j'),collapse=",")
 write(data,'chi.csv',append=T)
 flag=0
@@ -17,13 +17,21 @@ printable_index <- function(i){
     return (i)
 }
 
-while(i<=216)#1934 taking into account target, but should be 1933
+read<-read.csv('attr.csv')[[1]]
+len<-1
+
+####no i loop reqd then
+
+while(len<length(read))
 {
-    j<-i+1
-    while(j<=216) #1933
+    i<-printable_index(read[[len]])
+
+    len1<-len+1
+    while(len1<=length(read)) #1933
     {
+    j<-printable_index(read[[len1]])
     print(j)
-    d<-c(na.omit(v[[i]]),na.omit(v[[i+1]]))
+    d<-c(na.omit(v[[i]]),na.omit(v[[j]]))
     
     chi<-chisq.test(d)[[1]]
     if(flag==0){
@@ -46,9 +54,9 @@ while(i<=216)#1934 taking into account target, but should be 1933
     
     data<-paste(c(chi,printable_index(i),printable_index(j)),collapse=",")
     write(data,'chi.csv',append=T)
-    j<-j+1
+    len1<-len1+1
     }
-    i<-i+1
+    len<-len+1
 }
 
 
