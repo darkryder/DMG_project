@@ -5,7 +5,7 @@ from utils import get_data, _make_equal_length
 all_data = get_data()
 
 ROW_COUNT = 145231
-LIMIT = 15
+LIMIT = 1000
 _heap = []
 pbar = ProgressBar(maxval=ROW_COUNT).start()
 
@@ -31,6 +31,3 @@ for i, dataset in enumerate(all_data):
 
 pbar.finish()
 print _heap
-
-
-

@@ -1,7 +1,7 @@
 import csv
 #from progressbar import ProgressBar
 
-PATH = "train.csv"
+PATH = "train_change.csv"
 ROW_COUNT = 145231
 ABSENT_ATTRIBUTES = (218, 240)
 
