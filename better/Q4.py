@@ -65,3 +65,9 @@ filtered = [x for x in all_info if (x != EMPTY_RESPONSE and
 filtered = sorted(filtered, key=lambda x: x[3], reverse=True)
 
 print filtered[0], all_info.index(filtered[0])
+
+f = open("Q4_output.txt", 'w')
+f.write("DISPERSION, ID\n")
+for x in filtered[:10]:
+    f.write("%d %s\n", x[3], str(all_info.index(x)))
+f.close()

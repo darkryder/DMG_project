@@ -31,3 +31,10 @@ for i, dataset in enumerate(all_data):
 
 pbar.finish()
 print _heap
+
+f = open("Q5_output.txt", 'w')
+f.write("COUNT, ID\n")
+for x in range(20):
+    a = heappop(_heap)
+    f.write("%d, %s\n", a[0], str(a[1]))
+f.close()
