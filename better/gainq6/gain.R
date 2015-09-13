@@ -1,6 +1,6 @@
 library(FSelector)
 library(rpart)
-table <- read.csv("cleaned_train.csv", header=0);
+table <- read.csv("numeric_train.csv", header=0);
     table <- na.omit(v[,colSums(is.na(table))<nrow(table)])
     #print (table)
     nms <- colnames(table)
